@@ -1,75 +1,76 @@
-/* style.css */
-
-/* Body font family for better Hindi readability */
+/* Reset some default spacing */
 body {
-  font-family: "Mangal", "Noto Sans Devanagari", "Lohit Devanagari", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: 'Josefin Sans', sans-serif;
   background-color: #f8f9fa;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
-/* Header link hover effect */
-header a:hover {
-  text-decoration: underline;
+h1, h2, h3 {
+  font-weight: 700;
 }
 
-/* Textarea styling */
-#inputText {
-  font-size: 1.25rem; /* 20px approx */
-  font-family: inherit;
+.navbar-brand {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+textarea {
   resize: vertical;
-  min-height: 120px;
-  line-height: 1.5;
+  font-size: 18px;
 }
 
-/* Result image styling */
-#resultImage {
-  max-height: 400px;
+canvas {
+  border: 1px solid #ced4da;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid #ddd;
-  background: white;
+  margin: 0 auto;
+  background-color: #ffffff;
 }
 
-/* Buttons consistent spacing */
-button,
-input[type="submit"],
-a.btn {
-  cursor: pointer;
-  user-select: none;
+/* Font preview dropdown styling */
+#fontSelect option {
+  font-size: 16px;
+  font-family: inherit;
 }
 
-/* Ad slots styling */
-.mb-3.p-3.bg-light.text-center {
-  border: 1px dashed #aaa;
-  color: #666;
-  font-style: italic;
+/* Social Share Buttons */
+#shareFb,
+#shareWa,
+#shareTw {
+  margin: 4px 4px 0 0;
 }
 
-/* Footer links */
+/* Responsive Ad Slots */
+div[class*="Ad Slot"] {
+  min-height: 60px;
+  font-size: 0.9rem;
+}
+
+/* Footer Styling */
+footer a {
+  text-decoration: none;
+}
+
 footer a:hover {
   text-decoration: underline;
 }
 
-/* Responsive tweaks */
-@media (max-width: 576px) {
-  #fontSizeDecrease,
-  #fontSizeIncrease {
-    font-size: 1.25rem;
-    padding: 0.3rem 0.6rem;
-  }
+/* Toggle nav spacing */
+.navbar-toggler {
+  border: none;
 }
 
-/* For dynamically loaded content container */
-#extraContent {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 1rem;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgb(0 0 0 / 0.05);
-  font-size: 1rem;
-  color: #333;
+@media (max-width: 768px) {
+  textarea {
+    font-size: 16px;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 8px;
+  }
+
+  #textCanvas {
+    height: auto;
+  }
 }
 
