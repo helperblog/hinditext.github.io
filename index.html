@@ -20,6 +20,7 @@
   <meta name="twitter:title" content="Hindi Text to PNG Tool" />
   <meta name="twitter:description" content="Write in Hindi and download text as an image instantly." />
 
+  <!-- Schema Markup -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -38,186 +39,97 @@
   </script>
 
   <title>Hindi Text Generator | PNG Downloader</title>
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    body {
+      font-family: 'Josefin Sans', sans-serif;
+    }
+    .font-preview-option {
+      font-size: 16px;
+      padding: 4px;
+    }
+  </style>
 </head>
 <body>
-  <header class="bg-dark text-white py-3">
-    <div class="container d-flex justify-content-between align-items-center">
-      <h1 class="h4 mb-0">
-        <a href="index.html" class="text-white text-decoration-none">HindiText</a>
-      </h1>
-      <nav>
-        <a href="about.html" class="text-white me-3">About</a>
-        <a href="privacy.html" class="text-white me-3">Privacy</a>
-        <a href="contact.html" class="text-white">Contact</a>
-      </nav>
-    </div>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">HindiText</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="privacy.html">Privacy</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </header>
 
   <main class="container py-4">
-    <div class="mb-3 p-3 bg-light text-center">Ad Slot: Top Banner</div>
+    <!-- Ad Slot 1: Top -->
+    <div class="mb-3 p-3 bg-light text-center border rounded">Ad Slot: Top Banner</div>
 
-    <form id="fontForm" class="mb-4" autocomplete="off">
+    <!-- Tool UI -->
+    <div class="card p-4">
+      <h1 class="mb-3 text-center">Hindi Text to PNG Generator</h1>
+
+      <textarea class="form-control mb-3" id="hindiInput" rows="4" placeholder="यहाँ हिंदी में लिखें..."></textarea>
+
+      <div class="row mb-3">
+        <div class="col-md-6 mb-2">
+          <label for="fontSelect" class="form-label">Font चुनें:</label>
+          <select class="form-select" id="fontSelect"></select>
+        </div>
+        <div class="col-md-6 mb-2">
+          <label for="fontSize" class="form-label">Font Size:</label>
+          <input type="range" class="form-range" id="fontSize" min="16" max="100" value="32" />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6 mb-2">
+          <label for="textAlign" class="form-label">Alignment:</label>
+          <select class="form-select" id="textAlign">
+            <option value="left">बायाँ</option>
+            <option value="center" selected>मध्य</option>
+            <option value="right">दायाँ</option>
+          </select>
+        </div>
+        <div class="col-md-6 mb-2">
+          <label for="bgColor" class="form-label">Background Color:</label>
+          <input type="color" id="bgColor" class="form-control form-control-color" value="#ffffff" />
+        </div>
+      </div>
+
       <div class="mb-3">
-        <textarea
-          id="inputText"
-          class="form-control"
-          rows="4"
-          placeholder="यहाँ हिंदी में लिखें..."
-        ></textarea>
+        <label for="uploadFont" class="form-label">अपना फ़ॉन्ट अपलोड करें:</label>
+        <input type="file" id="uploadFont" accept=".ttf,.otf,.woff" class="form-control" />
       </div>
 
-      <div class="row g-3">
-        <div class="col-md-4">
-          <label class="form-label">Font</label>
-          <select id="fontSelect" class="form-select">
-            <option value="Mangal">Mangal</option>
-            <option value="Lohit Devanagari">Lohit</option>
-          </select>
-        </div>
-        <div class="col-md-4">
-          <label class="form-label">Upload Font</label>
-          <input
-            type="file"
-            id="uploadFont"
-            class="form-control"
-            accept=".ttf,.otf"
-          />
-        </div>
-        <div class="col-md-4">
-          <label class="form-label d-block mb-1">Font Size (px)</label>
-          <div class="input-group">
-            <button
-              type="button"
-              id="fontSizeDecrease"
-              class="btn btn-outline-secondary"
-              aria-label="Decrease font size"
-            >
-              −
-            </button>
-            <input
-              type="number"
-              id="fontSize"
-              class="form-control text-center"
-              value="48"
-              min="10"
-              max="200"
-            />
-            <button
-              type="button"
-              id="fontSizeIncrease"
-              class="btn btn-outline-secondary"
-              aria-label="Increase font size"
-            >
-              +
-            </button>
-          </div>
-          <input
-            type="range"
-            id="fontSizeRange"
-            min="10"
-            max="200"
-            value="48"
-            class="form-range mt-2"
-            aria-label="Font size slider"
-          />
-        </div>
-      </div>
+      <!-- Ad Slot 2: Middle -->
+      <div class="my-3 p-3 bg-light text-center border rounded">Ad Slot: Middle</div>
 
-      <div class="row g-3 mt-3">
-        <div class="col-md-3">
-          <label class="form-label">Text Align</label>
-          <select id="textAlign" class="form-select">
-            <option value="left">Left</option>
-            <option value="center">Center</option>
-            <option value="right">Right</option>
-          </select>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">Font Color</label>
-          <input
-            type="color"
-            id="fontColor"
-            class="form-control form-control-color"
-            value="#000000"
-          />
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">BG Color</label>
-          <input
-            type="color"
-            id="bgColor"
-            class="form-control form-control-color"
-            value="#ffffff"
-          />
-        </div>
-        <div class="col-md-3 d-flex align-items-end">
-          <div class="form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              id="transparentBg"
-            />
-            <label class="form-check-label" for="transparentBg"
-              >Transparent BG</label
-            >
-          </div>
-        </div>
-      </div>
+      <canvas id="textCanvas" class="border w-100 mb-3" height="200"></canvas>
 
-      <div
-        class="mt-3 d-flex justify-content-between align-items-center"
-      >
-        <span id="charCount">0 characters | 0 words</span>
-        <button type="button" id="resetBtn" class="btn btn-outline-secondary">
-          Reset
-        </button>
-      </div>
-
-      <div class="mt-4 d-flex gap-2 flex-wrap">
-        <button
-          type="submit"
-          class="btn btn-primary flex-grow-1"
-          style="min-width: 140px"
-        >
-          Generate Image
-        </button>
-      </div>
-    </form>
-
-    <canvas id="canvas" style="display:none;"></canvas>
-    <img
-      id="resultImage"
-      class="img-fluid mb-3 border rounded"
-      alt="Generated Preview"
-    />
-    <a
-      id="downloadBtn"
-      class="btn btn-success mb-4"
-      style="display:none;"
-      download="hinditext.png"
-      >Download PNG</a
-    >
-
-    <div class="mb-4">
-      <button id="shareTwitter" class="btn btn-info me-2" aria-label="Share on Twitter">
-        Share on Twitter
-      </button>
-      <button id="shareFacebook" class="btn btn-primary me-2" aria-label="Share on Facebook">
-        Share on Facebook
-      </button>
-      <button id="shareWhatsApp" class="btn btn-success" aria-label="Share on WhatsApp">
-        Share on WhatsApp
-      </button>
+      <button class="btn btn-primary" id="downloadBtn">Download PNG</button>
     </div>
 
-    <div class="mb-3 p-3 bg-light text-center">Ad Slot: Sidebar or Bottom</div>
+    <div class="my-4 text-center">
+      <strong>Share:</strong>
+      <a class="btn btn-sm btn-outline-primary me-2" href="#" id="shareFb">Facebook</a>
+      <a class="btn btn-sm btn-outline-success me-2" href="#" id="shareWa">WhatsApp</a>
+      <a class="btn btn-sm btn-outline-info me-2" href="#" id="shareTw">Twitter</a>
+    </div>
 
-    <!-- Dynamic content load -->
     <div id="extraContent" class="mt-5"></div>
   </main>
 
@@ -229,27 +141,21 @@
         <a href="privacy.html" class="text-white me-2">Privacy</a>
         <a href="contact.html" class="text-white me-2">Contact</a>
       </p>
-      <div class="text-muted small">Ad Slot: Footer</div>
+      <!-- Ad Slot 3: Footer -->
+      <div class="text-muted small mt-2 border rounded bg-light text-dark p-2">Ad Slot: Footer</div>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
-
   <script>
-    // Load content.html into #extraContent dynamically
+    // Load content.html dynamically
     fetch('content.html')
-      .then(response => {
-        if (!response.ok) throw new Error('Network response was not ok');
-        return response.text();
-      })
+      .then(res => res.ok ? res.text() : '')
       .then(html => {
         document.getElementById('extraContent').innerHTML = html;
       })
-      .catch(err => {
-        document.getElementById('extraContent').innerHTML = '<p>Content load nahi ho paya.</p>';
-        console.error('Error loading content.html:', err);
-      });
+      .catch(err => console.warn("content.html loading failed", err));
   </script>
 </body>
 </html>
