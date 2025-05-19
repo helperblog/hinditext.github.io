@@ -1,0 +1,75 @@
+/* style.css */
+
+/* Body font family for better Hindi readability */
+body {
+  font-family: "Mangal", "Noto Sans Devanagari", "Lohit Devanagari", sans-serif;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header link hover effect */
+header a:hover {
+  text-decoration: underline;
+}
+
+/* Textarea styling */
+#inputText {
+  font-size: 1.25rem; /* 20px approx */
+  font-family: inherit;
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.5;
+}
+
+/* Result image styling */
+#resultImage {
+  max-height: 400px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #ddd;
+  background: white;
+}
+
+/* Buttons consistent spacing */
+button,
+input[type="submit"],
+a.btn {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Ad slots styling */
+.mb-3.p-3.bg-light.text-center {
+  border: 1px dashed #aaa;
+  color: #666;
+  font-style: italic;
+}
+
+/* Footer links */
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  #fontSizeDecrease,
+  #fontSizeIncrease {
+    font-size: 1.25rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+/* For dynamically loaded content container */
+#extraContent {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 0.05);
+  font-size: 1rem;
+  color: #333;
+}
+
